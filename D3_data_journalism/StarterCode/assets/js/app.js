@@ -79,25 +79,45 @@ function renderAxes(newXScale, yAxis) {
 
 // function used for updating circles group with a transition to
 // new circles
-function renderCircles(circlesGroup, newXScale, chosenXAxis) {
+function renderCircles(circlesGroup, newXScale, newYScale, chosenXAxis, chosenYAxix) {
 
   circlesGroup.transition()
     .duration(1000)
-    .attr("cx", d => newXScale(d[chosenXAxis]));
+    .attr("cx", d => newXScale(d[chosenXAxis]))
+    .attr("cy", d => newYScale(d[chosenYAxis]));
 
   return circlesGroup;
 }
 
 // function used for updating circles group with new tooltip
-function updateToolTip(chosenXAxis, circlesGroup) {
+function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 
-  var label;
-
-  if (chosenXAxis === "hair_length") {
-    label = "Hair Length:";
+  var xLabel;
+  // Poverty  
+  if (chosenXAxis === "poverty") {
+    xLabel = "Poverty:";
   }
+  // Income
+  else if (chosenXAxis === "income") {
+    xLabel = "Income:";
+  }
+  // Age
   else {
-    label = "# of Albums:";
+    xLabel = "Age:"
+  }
+
+  var yLabel;
+  // Healthcare
+  if (chosenYAxis === "healthcare") {
+      yLabel = "Health Care:"
+  }
+  // Obesity
+  else if (chosenYAxis === "obesity") {
+      yLabel = "Obesity:"
+  }
+  // Smokers
+  else {
+      yLabel = "Smokers:"
   }
 
   var toolTip = d3.tip()

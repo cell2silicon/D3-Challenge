@@ -120,39 +120,44 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
       yLabel = "Smokers:"
   }
 
-  var toolTip = d3.tip()
-    .attr("class", "tooltip")
-    .offset([80, -60])
-    .html(function(d) {
-      return (`${d.rockband}<br>${label} ${d[chosenXAxis]}`);
-    });
+//   var toolTip = d3.tip()
+//     .attr("class", "tooltip")
+//     .offset([80, -60])
+//     .html(function(d) {
+//       return (`${d.rockband}<br>${label} ${d[chosenXAxis]}`);
+//     });
 
-  circlesGroup.call(toolTip);
+//   circlesGroup.call(toolTip);
 
-  circlesGroup.on("mouseover", function(data) {
-    toolTip.show(data);
-  })
-    // onmouseout event
-    .on("mouseout", function(data, index) {
-      toolTip.hide(data);
-    });
+//   // On Mouse On Event  
+//   circlesGroup.on("mouseover", function(data) {
+//     toolTip.show(data);
+//   })
+//     // On Mouseout Event
+//     .on("mouseout", function(data, index) {
+//       toolTip.hide(data);
+//     });
 
-  return circlesGroup;
-}
+//   return circlesGroup;
+// }
 
 // Retrieve data from the CSV file and execute everything below
-d3.csv("hairData.csv").then(function(hairData, err) {
+d3.csv("./data/data.csv").then(function(censusData, err) {
   if (err) throw err;
-
-  // parse data
-  hairData.forEach(function(data) {
-    data.hair_length = +data.hair_length;
-    data.num_hits = +data.num_hits;
-    data.num_albums = +data.num_albums;
+//   console.log(censusData);  
+//   parse data
+  censusData.forEach(function(data) {
+    data.obesity = +data.obesity;
+    data.income = +data.income;
+    data.poverty = +data.poverty;
+    data.healthcare = +data.healthcare;
+    data.age = +data.age;
+    data.smokes = +data.smokes;
   });
 
-  // xLinearScale function above csv import
-  var xLinearScale = xScale(hairData, chosenXAxis);
+  // Creating Linear Scale function above csv import
+  var xLinearScale = xScale(censusData, chosenXAxis);
+  var yLinearScale = yScale(censusData, chosenYAxis);
 
   // Create y scale function
   var yLinearScale = d3.scaleLinear()

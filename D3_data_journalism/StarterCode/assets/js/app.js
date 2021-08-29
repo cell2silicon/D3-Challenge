@@ -355,7 +355,7 @@ d3.csv("./assets/data/data.csv").then(function(censusData, err) {
       circlesGroup = renderCircles(circlesGroup,textGroup, xLinearScale, chosenXAxis);
 
       // updates tooltips with new info
-      circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
+      circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
     if (chosenYAxis === "healthcare") {
             healthLabel

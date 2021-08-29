@@ -79,7 +79,7 @@ function renderYAxes(newXScale, yAxis) {
 
 // function used for updating circles group with a transition to
 // new circles
-function renderCircles(circlesGroup,textGroup, newXScale, chosenXAxis, newYScale, chosenYAxix) {
+function renderCircles(circlesGroup,textGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
 
   circlesGroup.transition()
     .duration(2000)
@@ -94,7 +94,7 @@ function renderCircles(circlesGroup,textGroup, newXScale, chosenXAxis, newYScale
 }
 
 // function used for updating circles group with new tooltip
-function updateToolTip(chosenXAxis, circlesGroup, chosenYAxis) {
+function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
     console.log(chosenXAxis)
   var xLabel;
   // Poverty  

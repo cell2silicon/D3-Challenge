@@ -359,10 +359,13 @@ d3.csv("./assets/data/data.csv").then(function(censusData, err) {
       yLinearScale = yScale(censusData, chosenXAxis);
 
       // updates x axis with transition
-      yAxis = renderyAxes(yLinearScale, yAxis);
+      yAxis = renderYAxis(yLinearScale, yAxis);
 
-      // updates circles with new x values
-      circlesGroup = renderCircles(circlesGroup,textGroup, xLinearScale, chosenXAxis);
+      // updates circles with new Y values
+      circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
+
+      // Updating circles text
+      textGroup = renderText(textGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
 
       // updates tooltips with new info
       circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);

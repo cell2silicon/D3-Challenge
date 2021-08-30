@@ -356,7 +356,7 @@ d3.csv("./assets/data/data.csv").then(function(censusData, err) {
 
       // functions here found above csv import
       // updates x scale for new data
-      yLinearScale = yScale(censusData, chosenXAxis);
+      yLinearScale = yScale(censusData, chosenYAxis);
 
       // updates x axis with transition
       yAxis = renderYAxis(yLinearScale, yAxis);

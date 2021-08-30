@@ -12,6 +12,11 @@ html {
 body {
   /* Padding bottom by footer height */
   padding-bottom: 80px;
+  padding-top: 40px;
+}
+
+h1 {
+  text-align: center;
 }
 
 #footer {

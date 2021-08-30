@@ -1,13 +1,13 @@
 // @TODO: YOUR CODE HERE!
 
-var svgWidth = 960;
+var svgWidth = 1060;
 var svgHeight = 600;
 
 var margin = {
-  top: 20,
+  top: 30,
   right: 40,
   bottom: 100,
-  left: 100
+  left: 80
 };
 
 var width = svgWidth - margin.left - margin.right;
@@ -136,7 +136,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 
   var toolTip = d3.tip()
     .attr("class", "tooltip")
-    .offset([80, -60])
+    .offset([0, -8])
     .html(function(d) {
       return (`${d.abbr}<br>${xLabel} ${d[chosenXAxis]}<br>${yLabel} ${d[chosenYAxis]}`);
     });
@@ -244,34 +244,34 @@ d3.csv("./assets/data/data.csv").then(function(censusData, err) {
 
 
   var yLabelsGroup = chartGroup.append("g")
-    .attr("transform", `translate(${0 - margin.left/2}, ${height + 20})`);
+    .attr("transform", `translate(${0 - margin.left/15}, ${height/4})`);
 
   // Create group for y-axis labels
   var healthLabel = yLabelsGroup.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left)
-    .attr("x", 0 - (height / 2))
+    .attr("y", 40 - margin.left)
+    .attr("x", 0 - (height / 4))
     .attr("value", "healthcare") // value to grab for event listener
     .attr("dy", "1em")
-    .classed("axis-text", true)
+    .classed("active", true)
     .text("Healthcare");
 
   var smokesLabel = yLabelsGroup.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 20 - margin.left)
-    .attr("x", 0 - (height / 2))
+    .attr("y", 22 - margin.left)
+    .attr("x", 0 - (height / 4))
     .attr("value", "smokes") // value to grab for event listener
     .attr("dy", "1em")
-    .classed("axis-text", true)
+    .classed("inactive", true)
     .text("Smokers");
 
   var obesityLabel = yLabelsGroup.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 40 - margin.left)
-    .attr("x", 0 - (height / 2))
+    .attr("y", 5 - margin.left)
+    .attr("x", 0 - (height / 4))
     .attr("value", "obesity") // value to grab for event listener
     .attr("dy", "1em")
-    .classed("axis-text", true)
+    .classed("inactive", true)
     .text("Obesity");
 
   // updateToolTip function above csv import
